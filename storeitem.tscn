@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm5j64r1h6ehu"]
+
+[ext_resource type="Script" uid="uid://fxk08h5uwrq7" path="res://storeitem.gd" id="1_1ia12"]
+
+[node name="storeitem" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1ia12")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "get"
+
+[node name="Window" type="Window" parent="."]
+initial_position = 2
+size = Vector2i(160, 75)
+visible = false
+transient = true
+unresizable = true
+popup_window = true
+extend_to_title = true
+content_scale_aspect = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Window/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "are you sure?"
+horizontal_alignment = 1
+
+[node name="download" type="Button" parent="Window/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "download & install"
+
+[node name="download" type="HTTPRequest" parent="."]
+use_threads = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+[connection signal="pressed" from="Window/CenterContainer/VBoxContainer/download" to="." method="_on_download_pressed"]
+[connection signal="request_completed" from="download" to="." method="_on_download_request_completed"]

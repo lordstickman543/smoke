@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgmxdhl8s7jhh"]
+
+[ext_resource type="PackedScene" uid="uid://d3nmm04fc45rv" path="res://games.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://yj3bu351erud" path="res://store.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ctyclnff30b2n" path="res://settings.tscn" id="3_h2yge"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer"]
+layout_mode = 2
+current_tab = 0
+
+[node name="games" parent="PanelContainer/TabContainer" instance=ExtResource("1_ig7tw")]
+visible = true
+layout_mode = 2
+
+[node name="store" parent="PanelContainer/TabContainer" instance=ExtResource("2_0xm2m")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="settings" parent="PanelContainer/TabContainer" instance=ExtResource("3_h2yge")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
